@@ -2,6 +2,7 @@ import importlib
 from typing import List, Optional, Set
 
 from docutils import nodes
+from docutils.statemachine import StringList
 
 # from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
@@ -93,7 +94,11 @@ class SqlaModelDirective(SphinxDirective):
 
         # class documentation
         if mapper.class_.__doc__:
-            definition += nodes.paragraph(text=f"{mapper.class_.__doc__}")
+            self.state.nested_parse(
+                StringList(mapper.class_.__doc__.splitlines()),
+                self.content_offset,
+                definition,
+            )
 
         # column documentation
         if mapper.columns:

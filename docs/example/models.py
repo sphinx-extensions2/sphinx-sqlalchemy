@@ -5,7 +5,7 @@ Base = orm.declarative_base()
 
 
 class User(Base):
-    """A user."""
+    """A ``user``."""
 
     __tablename__ = "dbusers"
     __table_args__ = (UniqueConstraint("first_name", "last_name"),)

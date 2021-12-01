@@ -1,7 +1,7 @@
 """Sphinx extension for documenting SQLAlchemy ORMs"""
 from typing import TYPE_CHECKING
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 if TYPE_CHECKING:
     from sphinx.application import Sphinx
