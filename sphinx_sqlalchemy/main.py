@@ -11,6 +11,7 @@ from sqlalchemy.orm.mapper import Mapper
 from sqlalchemy.sql.schema import (
     CheckConstraint,
     ForeignKeyConstraint,
+    Index,
     PrimaryKeyConstraint,
     UniqueConstraint,
 )
@@ -137,6 +138,13 @@ class SqlaModelDirective(SphinxDirective):
             for text in sorted(contraint_to_str(c) for c in constraints):
                 definition[-1] += nodes.list_item("", nodes.paragraph(text=text))
 
+        # table indexes
+        if mapper.local_table is not None and mapper.local_table.indexes:
+            definition += nodes.rubric(text="Indexes:")
+            definition += nodes.bullet_list()
+            for text in sorted(index_to_str(c) for c in mapper.local_table.indexes):
+                definition[-1] += nodes.list_item("", nodes.paragraph(text=text))
+
 
 def contraint_to_str(constraint: Constraint) -> str:
     """Convert a constraint to a string."""
@@ -153,3 +161,8 @@ def contraint_to_str(constraint: Constraint) -> str:
     if isinstance(constraint, CheckConstraint):
         return f"CHECK ({constraint.sqltext.text})"  # type: ignore
     return "UNKNOWN"
+
+
+def index_to_str(index: Index) -> str:
+    """Convert an index to a string."""
+    return f"{index.name} ({', '.join(c.name for c in index.columns)})"
