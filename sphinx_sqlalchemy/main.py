@@ -1,4 +1,5 @@
 import importlib
+import logging
 from typing import List, Optional, Set
 
 from docutils import nodes
@@ -7,7 +8,7 @@ from docutils.statemachine import StringList
 # from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 from sphinx.util.docutils import SphinxDirective
-from sqlalchemy import Constraint, inspect
+from sqlalchemy import Column, Constraint, inspect
 from sqlalchemy.orm.mapper import Mapper
 from sqlalchemy.sql.schema import (
     CheckConstraint,
@@ -16,6 +17,8 @@ from sqlalchemy.sql.schema import (
     PrimaryKeyConstraint,
     UniqueConstraint,
 )
+
+logger = logging.getLogger(__name__)
 
 
 def setup_extension(app: Sphinx) -> None:
@@ -102,8 +105,18 @@ class SqlaModelDirective(SphinxDirective):
 
         # column documentation
         if mapper.columns:
+            columns = []
+            for column in mapper.columns:
+                # Skip column expressions without a data type,
+                # eg. query_expressions. See query_expression on
+                # https://docs.sqlalchemy.org/en/14/orm/loading_columns.html
+                if not isinstance(column, Column):
+                    logger.warning(f"Skipping column '{column.name}' {type(column)}")
+                else:
+                    columns.append(column)
+
             definition += nodes.rubric(text="Columns:")
-            doc_column = any(column.doc for column in mapper.columns)
+            doc_column = any(column.doc for column in columns)
             cols = 3 if doc_column else 2
             definition += nodes.table(
                 "",
@@ -114,7 +127,7 @@ class SqlaModelDirective(SphinxDirective):
                 align="left",
             )
             body = definition[-1][-1][-1]
-            for column in mapper.columns:
+            for column in columns:
                 row = nodes.row()
                 body += row
                 col_name = f"{column.name}"
