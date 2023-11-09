@@ -38,6 +38,8 @@ Documentation = "https://sphinx-sqlalchemy.readthedocs.io"
 dev = [
     "pytest",
     "pytest-cov",
+    "sphinx-pytest",
+    "syrupy~=4.0",
 ]
 docs = ["furo==2021.11.23"]
 
