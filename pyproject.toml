@@ -24,7 +24,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 keywords = ["sphinx", "extension"]
-requires-python = "~=3.7"
+requires-python = "~=3.8"
 dependencies = [
     "sphinx>=3,<5",
     "sqlalchemy~=1.4.22",
