@@ -42,7 +42,7 @@ dev = [
     "sphinx-pytest",
     "syrupy~=4.0",
 ]
-docs = ["furo==2021.11.23"]
+docs = ["furo"]
 
 [tool.ruff]
 line-length = 100
