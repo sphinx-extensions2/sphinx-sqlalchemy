@@ -28,7 +28,7 @@ keywords = ["sphinx", "extension"]
 requires-python = "~=3.8"
 dependencies = [
     "sphinx>=5,<8",
-    "sqlalchemy~=1.4.22",
+    "sqlalchemy~=2.0",
 ]
 
 [project.urls]
