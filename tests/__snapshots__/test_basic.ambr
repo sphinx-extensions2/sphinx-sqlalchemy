@@ -1,0 +1,77 @@
+# serializer version: 1
+# name: test_basic
+  '''
+  <document source="<src>/index.rst">
+      <definition_list classes="simple sqla">
+          <definition_list_item>
+              <term>
+                  module1.TestUser
+                   (
+                  <emphasis>
+                      dbusers
+                  )
+              <definition>
+                  <paragraph>
+                      A
+                      <literal>
+                          user
+                      .
+                  <rubric>
+                      Columns:
+                  <table align="left" classes="colwidths-auto">
+                      <tgroup cols="3">
+                          <colspec>
+                          <colspec>
+                          <colspec>
+                          <tbody>
+                              <row>
+                                  <entry>
+                                      <paragraph>
+                                          <emphasis>
+                                              pk*
+                                  <entry>
+                                      <paragraph>
+                                          INTEGER
+                                  <entry>
+                                      <paragraph>
+                              <row>
+                                  <entry>
+                                      <paragraph>
+                                          first_name
+                                  <entry>
+                                      <paragraph>
+                                          VARCHAR?
+                                  <entry>
+                                      <paragraph>
+                                          The name of the user.
+                              <row>
+                                  <entry>
+                                      <paragraph>
+                                          last_name
+                                  <entry>
+                                      <paragraph>
+                                          VARCHAR(255)?
+                                  <entry>
+                                      <paragraph>
+                                          The surname of the user.
+                              <row>
+                                  <entry>
+                                      <paragraph>
+                                          dob
+                                  <entry>
+                                      <paragraph>
+                                          DATE
+                                  <entry>
+                                      <paragraph>
+                                          The date of birth.
+                  <rubric>
+                      Constraints:
+                  <bullet_list>
+                      <list_item>
+                          <paragraph>
+                              PRIMARY KEY (pk)
+                      <list_item>
+                          <paragraph>
+                              UNIQUE (first_name, last_name)
+  '''
+# ---

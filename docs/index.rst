@@ -3,6 +3,23 @@ sphinx-sqlalchemy
 
 Sphinx extension for documenting SQLAlchemy ORMs.
 
+Usage
+-----
+
+Install ``sphinx_sqlalchemy``:
+
+.. code-block:: bash
+
+    pip install sphinx_sqlalchemy
+
+Add ``sphinx_sqlalchemy`` to your ``conf.py``:
+
+.. code-block:: python
+
+    extensions = [
+        'sphinx_sqlalchemy',
+    ]
+
 Example
 -------
 
