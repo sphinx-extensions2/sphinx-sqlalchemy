@@ -11,4 +11,4 @@ def test_basic(sphinx_doctree_no_tr: CreateDoctree, snapshot):
     sphinx_doctree_no_tr.set_conf({"extensions": ["sphinx_sqlalchemy"]})
     result = sphinx_doctree_no_tr(".. sqla-model:: module1.TestUser")
     assert not result.warnings
-    assert result.pformat() == snapshot
+    assert "\n".join([li.rstrip() for li in result.pformat().splitlines()]) == snapshot
