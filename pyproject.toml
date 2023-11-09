@@ -1,6 +1,49 @@
 [build-system]
-requires = ["setuptools>=46.4.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "sphinx_sqlalchemy"
+dynamic = ["version"]
+description = "Sphinx extension for documenting SQLAlchemy ORMs"
+authors = [{name = "Chris Sewell", email = "chrisj_sewell@hotmail.com"}]
+license = {text = "MIT License"}
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Sphinx :: Extension",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["sphinx", "extension"]
+requires-python = "~=3.7"
+dependencies = [
+    "sphinx>=3,<5",
+    "sqlalchemy~=1.4.22",
+]
+
+[project.urls]
+Homepage = "http://github.com/chrisjsewell/sphinx-sqlalchemy"
+Documentation = "https://sphinx-sqlalchemy.readthedocs.io"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+docs = ["furo==2021.11.23"]
+
+[tool.ruff]
+line-length = 100
+extend-select = ["B0", "C4", "ICN", "ISC", "N", "RUF", "SIM"]
 
 [tool.isort]
 profile = "black"

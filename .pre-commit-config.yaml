@@ -10,24 +10,12 @@ exclude: &exclude_files >
 repos:
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.5.0
     hooks:
     - id: check-json
     - id: check-yaml
     - id: end-of-file-fixer
     - id: trailing-whitespace
-
-  - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v1.17.0
-    hooks:
-    - id: setup-cfg-fmt
-
-  - repo: https://github.com/mgedmin/check-manifest
-    rev: "0.46"
-    hooks:
-    - id: check-manifest
-      args: [--no-build-isolation]
-      additional_dependencies: [setuptools>=46.4.0]
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
@@ -35,29 +23,34 @@ repos:
     - id: isort
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.25.0
+    rev: v3.15.0
     hooks:
     - id: pyupgrade
       args: [--py37-plus]
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.11.0
     hooks:
     - id: black
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: '3.9.2'
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.1.5
     hooks:
-    - id: flake8
-      additional_dependencies:
-      - flake8-bugbear==20.1.4
-      - flake8-builtins==1.5.3
-      - flake8-comprehensions==3.2.3
-      - flake8-rst-docstrings==0.0.14
-      - flake8-markdown==0.2.0
+    - id: ruff
+
+  # - repo: https://github.com/PyCQA/flake8
+  #   rev: '6.1.0'
+  #   hooks:
+  #   - id: flake8
+  #     additional_dependencies:
+  #     - flake8-bugbear==20.1.4
+  #     - flake8-builtins==1.5.3
+  #     - flake8-comprehensions==3.2.3
+  #     - flake8-rst-docstrings==0.0.14
+  #     - flake8-markdown==0.2.0
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.4.1
+    rev: v1.6.1
     hooks:
     - id: mypy
       additional_dependencies:
