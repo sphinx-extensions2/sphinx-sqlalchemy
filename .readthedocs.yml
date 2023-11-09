@@ -7,10 +7,10 @@ build:
 
 python:
   install:
-      - method: pip
-        path: .
-        extra_requirements:
-          - docs
+  - method: pip
+    path: .
+    extra_requirements:
+      - docs
 
 sphinx:
   builder: html

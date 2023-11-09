@@ -21,12 +21,21 @@ jobs:
     - uses: pre-commit/action@v2.0.0
 
   tests:
+    name: tests on py${{ matrix.python-version }} with sphinx~=${{ matrix.sphinx-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
+        sphinx-version: ["7.0"]
         os: ['ubuntu-latest']
+        include:
+          - python-version: "3.8"
+            sphinx-version: "5.0"
+            os: 'ubuntu-latest'
+          - python-version: "3.8"
+            sphinx-version: "6.0"
+            os: 'ubuntu-latest'
 
     steps:
     - uses: actions/checkout@v2
@@ -38,7 +47,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e .[dev]
+        pip install sphinx~=${{ matrix.sphinx-version }} -e .[dev]
     - name: Test with pytest
       run: pytest -vv --cov=sphinx_sqlalchemy
       env:
