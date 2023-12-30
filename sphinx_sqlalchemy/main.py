@@ -1,5 +1,6 @@
 import importlib
 import logging
+import textwrap
 from typing import List, Optional, Set
 
 from docutils import nodes
@@ -97,8 +98,14 @@ class SqlaModelDirective(SphinxDirective):
 
         # class documentation
         if mapper.class_.__doc__:
+
+            # Extract docstring and dedent to support both D212 and D213 multiline docstrings
+            docstring: str = mapper.class_.__doc__
+            docstring_lines = docstring.splitlines(keepends=True)
+            docstring_lines = [textwrap.dedent(line) for line in docstring_lines]
+
             self.state.nested_parse(
-                StringList(mapper.class_.__doc__.splitlines()),
+                StringList(docstring_lines),
                 self.content_offset,
                 definition,
             )
