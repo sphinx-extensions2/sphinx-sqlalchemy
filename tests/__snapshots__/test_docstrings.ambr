@@ -17,7 +17,7 @@
                           user
                       .
                   <paragraph>
-                      The user has a multi-line doctsring.
+                      The user has a multi-line docstring.
                   <paragraph>
                       This is the last line of the docstring.
                   <rubric>
