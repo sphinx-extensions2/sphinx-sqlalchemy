@@ -23,7 +23,7 @@ class TestUserMultilineDocstringD212(Base):
 class TestUserMultilineDocstringD213(Base):
     """A ``user``.
 
-    The user has a multi-line doctsring.
+    The user has a multi-line docstring.
 
     This is the last line of the docstring.
     """
