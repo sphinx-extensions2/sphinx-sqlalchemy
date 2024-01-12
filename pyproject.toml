@@ -32,7 +32,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "http://github.com/chrisjsewell/sphinx-sqlalchemy"
+Homepage = "http://github.com/sphinx-extensions2/sphinx-sqlalchemy"
 Documentation = "https://sphinx-sqlalchemy.readthedocs.io"
 
 [project.optional-dependencies]
