@@ -9,7 +9,7 @@ class TestUserMultilineDocstringD212(Base):
 
     The user has a multi-line docstring::
 
-        This is an intented code block
+        This is an indented code block
 
     This is the last line of the docstring.
     """
@@ -27,7 +27,7 @@ class TestUserMultilineDocstringD213(Base):
 
     The user has a multi-line docstring::
 
-        This is an intented code block
+        This is an indented code block
 
     This is the last line of the docstring.
     """
