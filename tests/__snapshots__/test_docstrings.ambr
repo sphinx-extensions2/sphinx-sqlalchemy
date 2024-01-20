@@ -17,7 +17,9 @@
                           user
                       .
                   <paragraph>
-                      The user has a multi-line docstring.
+                      The user has a multi-line docstring:
+                  <literal_block xml:space="preserve">
+                      This is an intented code block
                   <paragraph>
                       This is the last line of the docstring.
                   <rubric>
@@ -97,7 +99,9 @@
                           user
                       .
                   <paragraph>
-                      The user has a multi-line docstring.
+                      The user has a multi-line docstring:
+                  <literal_block xml:space="preserve">
+                      This is an intented code block
                   <paragraph>
                       This is the last line of the docstring.
                   <rubric>
