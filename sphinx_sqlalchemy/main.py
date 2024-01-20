@@ -98,10 +98,7 @@ class SqlaModelDirective(SphinxDirective):
 
         # class documentation
         if mapper.class_.__doc__:
-            # Extract docstring and dedent to support both D212 and D213 multiline docstrings
-            docstring: str = mapper.class_.__doc__
-            docstring_lines = docstring.splitlines(keepends=True)
-            docstring_lines = [textwrap.dedent(line) for line in docstring_lines]
+            docstring_lines = prepare_docstring(mapper.class_.__doc__, self.state.document.settings.tab_width)
 
             self.state.nested_parse(
                 StringList(docstring_lines),
