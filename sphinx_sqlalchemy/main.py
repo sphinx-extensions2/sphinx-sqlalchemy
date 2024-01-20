@@ -1,6 +1,6 @@
 import importlib
 import logging
-import textwrap
+from sphinx.util.docstrings import prepare_docstring
 from typing import List, Optional, Set
 
 from docutils import nodes
