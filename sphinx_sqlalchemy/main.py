@@ -1,6 +1,5 @@
 import importlib
 import logging
-from sphinx.util.docstrings import prepare_docstring
 from typing import List, Optional, Set
 
 from docutils import nodes
@@ -8,6 +7,7 @@ from docutils.statemachine import StringList
 
 # from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
+from sphinx.util.docstrings import prepare_docstring
 from sphinx.util.docutils import SphinxDirective
 from sqlalchemy import Column, Constraint, inspect
 from sqlalchemy.orm.mapper import Mapper
