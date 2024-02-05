@@ -1,4 +1,5 @@
 """Sphinx extension for documenting SQLAlchemy ORMs"""
+
 from typing import TYPE_CHECKING
 
 __version__ = "0.2.0"

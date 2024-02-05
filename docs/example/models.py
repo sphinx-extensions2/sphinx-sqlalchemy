@@ -1,4 +1,5 @@
 """Example SQLAlchemy ORM models."""
+
 from sqlalchemy import CheckConstraint, Column, ForeignKey, UniqueConstraint, orm, types
 
 Base = orm.declarative_base()
