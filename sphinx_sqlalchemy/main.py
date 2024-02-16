@@ -8,7 +8,7 @@ from docutils.statemachine import StringList
 # from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 from sphinx.util.docutils import SphinxDirective
-from sqlalchemy import Column, Constraint, inspect
+from sqlalchemy import Column, ColumnElement, Constraint, inspect
 from sqlalchemy.orm.mapper import Mapper
 from sqlalchemy.sql.schema import (
     CheckConstraint,
@@ -164,6 +164,14 @@ class SqlaModelDirective(SphinxDirective):
                 definition[-1] += nodes.list_item("", nodes.paragraph(text=text))
 
 
+def check_constraint_to_str(constraint: CheckConstraint) -> str:
+    if isinstance(constraint.sqltext, ColumnElement):
+        text = constraint.sqltext.compile(compile_kwargs={"literal_binds": True})
+    else:
+        text = constraint.sqltext.text
+    return f"CHECK ({text})"
+
+
 def contraint_to_str(constraint: Constraint) -> str:
     """Convert a constraint to a string."""
     if isinstance(constraint, PrimaryKeyConstraint):
@@ -177,7 +185,7 @@ def contraint_to_str(constraint: Constraint) -> str:
     if isinstance(constraint, UniqueConstraint):
         return f"UNIQUE ({', '.join(c.name for c in constraint.columns)})"
     if isinstance(constraint, CheckConstraint):
-        return f"CHECK ({constraint.sqltext.text})"  # type: ignore
+        return check_constraint_to_str(constraint)
     return "UNKNOWN"
 
 
