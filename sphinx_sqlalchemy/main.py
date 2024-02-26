@@ -9,8 +9,9 @@ from docutils.statemachine import StringList
 from sphinx.application import Sphinx
 from sphinx.util.docstrings import prepare_docstring
 from sphinx.util.docutils import SphinxDirective
-from sqlalchemy import Column, ColumnElement, Constraint, inspect
+from sqlalchemy import Column, Constraint, inspect
 from sqlalchemy.orm.mapper import Mapper
+from sqlalchemy.sql.elements import ClauseElement
 from sqlalchemy.sql.schema import (
     CheckConstraint,
     ForeignKeyConstraint,
@@ -170,10 +171,10 @@ class SqlaModelDirective(SphinxDirective):
 
 
 def check_constraint_to_str(constraint: CheckConstraint) -> str:
-    if isinstance(constraint.sqltext, ColumnElement):
+    if isinstance(constraint.sqltext, ClauseElement):
         text = constraint.sqltext.compile(compile_kwargs={"literal_binds": True})
     else:
-        text = constraint.sqltext.text
+        text = getattr(constraint.sqltext, "text", "")
     return f"CHECK ({text})"
 
 
