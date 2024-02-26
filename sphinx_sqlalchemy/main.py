@@ -7,6 +7,7 @@ from docutils.statemachine import StringList
 
 # from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
+from sphinx.util.docstrings import prepare_docstring
 from sphinx.util.docutils import SphinxDirective
 from sqlalchemy import Column, Constraint, inspect
 from sqlalchemy.orm.mapper import Mapper
@@ -97,8 +98,12 @@ class SqlaModelDirective(SphinxDirective):
 
         # class documentation
         if mapper.class_.__doc__:
+            docstring_lines = prepare_docstring(
+                mapper.class_.__doc__, self.state.document.settings.tab_width
+            )
+
             self.state.nested_parse(
-                StringList(mapper.class_.__doc__.splitlines()),
+                StringList(docstring_lines),
                 self.content_offset,
                 definition,
             )
