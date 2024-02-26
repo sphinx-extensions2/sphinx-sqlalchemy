@@ -69,6 +69,9 @@
                   <bullet_list>
                       <list_item>
                           <paragraph>
+                              CHECK (length(trim('first_name')) > 0)
+                      <list_item>
+                          <paragraph>
                               PRIMARY KEY (pk)
                       <list_item>
                           <paragraph>
