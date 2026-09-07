@@ -10,7 +10,7 @@ exclude: &exclude_files >
 repos:
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v6.0.0
     hooks:
     - id: check-json
     - id: check-yaml
@@ -18,23 +18,23 @@ repos:
     - id: trailing-whitespace
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
+    rev: 9.0.1
     hooks:
     - id: isort
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.0
+    rev: v3.21.2
     hooks:
     - id: pyupgrade
       args: [--py37-plus]
 
-  - repo: https://github.com/psf/black
-    rev: 24.1.1
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 26.5.1
     hooks:
     - id: black
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.2.0
+    rev: v0.16.6
     hooks:
     - id: ruff
 
@@ -50,7 +50,7 @@ repos:
   #     - flake8-markdown==0.2.0
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
+    rev: v2.3.1
     hooks:
     - id: mypy
       additional_dependencies:
