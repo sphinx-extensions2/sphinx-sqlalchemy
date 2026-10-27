@@ -27,7 +27,7 @@ classifiers = [
 keywords = ["sphinx", "extension"]
 requires-python = "~=3.8"
 dependencies = [
-    "sphinx>=5,<8",
+    "sphinx>=5",
     "sqlalchemy~=2.0",
 ]
 
